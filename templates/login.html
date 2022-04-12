@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container text-center d-flex py-5">
+    <div class="card m-auto w-50">
+        {% if request.user.is_authenticated %}
+            <div class="card-title p-4">
+                You are already Logged In. Want to logout?
+            </div>
+            <div class="card-body"> 
+            <a href="{% url 'logout' %}" class="btn btn-primary mb-3 btn-lg">Logout</a>
+            </div>
+        {% else %}
+        <div class="card-title bg-light text-secondary">
+            <h1>Login</h1>
+        </div>
+        <div class="card-body">
+    <form action="" method="POST">
+        {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"><h5>Username</h5></label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="username" placeholder="Username">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"><h5>Password</h5></label>
+              <input type="password" class="form-control" id="exampleFormControlInput1" name="password" placeholder="Password">
+            </div>
+          <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Login Now</button>
+  </div>
+    </form>
+    </div>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
