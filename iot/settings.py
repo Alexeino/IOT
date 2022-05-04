@@ -73,7 +73,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'iot.wsgi.application'
-
+SESSION_COOKIE_AGE=  100
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

@@ -12,47 +12,60 @@
                 <table class="table table-striped table-dark w-50 m-auto">
                     <thead>
                         <tr>
-                        <th scope="col">Relay Number</th>
-                        <th scope="col">&nbsp;&nbsp;ON</th>
-                        <th scope="col">&nbsp;&nbsp;OFF</th>
+                            <th scope="col">Relay Number</th>
+                            <th scope="col">&nbsp;&nbsp;ON</th>
+                            <th scope="col">&nbsp;&nbsp;OFF</th>
+                            <th scope="col" class="text-center">&nbsp;&nbsp;Status</th>
                         </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <th scope="row">1</th>
                         <td class="text-left">
-                            <button class="btn btn-light">ON</button>
+                            <button id="relay_1_on" class="btn btn-light">ON</button>
                         </td>
                         <td class="text-left">
-                            <button class="btn btn-secondary">OFF</button>
+                            <button id="relay_1_off" class="btn btn-secondary">OFF</button>
+                        </td> 
+                        <td class="text-center">
+                            <span class="dot" id="dot_1"></span>
                         </td>                        
                     </tr>
                     <tr>
                         <th scope="row">2</th>
                         <td class="text-left">
-                            <button class="btn btn-light">ON</button>
+                            <button id="relay_2_on" class="btn btn-light">ON</button>
                         </td>
                         <td class="text-left">
-                            <button class="btn btn-secondary">OFF</button>
-                        </td> 
+                            <button id="relay_2_off" class="btn btn-secondary">OFF</button>
+                        </td>
+                        <td class="text-center">
+                            <span class="dot" id="dot_2"></span>
+                        </td>    
                     </tr>
                         <tr>
                         <th scope="row">3</th>
                         <td class="text-left">
-                            <button class="btn btn-light">ON</button>
+                            <button id="relay_3_on" class="btn btn-light">ON</button>
                         </td>
                         <td class="text-left">
-                            <button class="btn btn-secondary">OFF</button>
+                            <button id="relay_3_off" class="btn btn-secondary">OFF</button>
                         </td> 
+                        <td class="text-center">
+                            <span class="dot" id="dot_3"></span>
+                        </td>   
                         </tr>
                         <tr>
                         <th scope="row">4</th>
                         <td class="text-left">
-                            <button class="btn btn-light">ON</button>
+                            <button id="relay_4_on" class="btn btn-light">ON</button>
                         </td>
                         <td class="text-left">
-                            <button class="btn btn-secondary">OFF</button>
+                            <button id="relay_4_off" class="btn btn-secondary">OFF</button>
                         </td> 
+                        <td class="text-center">
+                            <span class="dot" id="dot_4"></span>
+                        </td>   
                         </tr>
                     </tbody>
                     </table>
@@ -84,5 +97,122 @@
         </div>
 
     </div>
+
+<script>
+    const relay_1_on = document.getElementById("relay_1_on");
+    const relay_1_off = document.getElementById("relay_1_off");
+    const relay_2_on = document.getElementById("relay_2_on");
+    const relay_2_off = document.getElementById("relay_2_off");
+    const relay_3_off = document.getElementById("relay_3_off");
+    const relay_3_on = document.getElementById("relay_3_on");
+    const relay_4_off = document.getElementById("relay_4_off");
+    const relay_4_on = document.getElementById("relay_4_on");
+    const dot_1 = document.getElementById("dot_1");
+    const dot_2 = document.getElementById("dot_2");
+    const dot_3 = document.getElementById("dot_3");
+    const dot_4 = document.getElementById("dot_4");
+
+    relay_1_on.addEventListener("click",()=>{
+        console.log("Relay 1")
+        $.ajax({
+            url : "http://188.166.206.43/pJz6LWALkpKRzU3HB1G6Zmq13qwqxrj7/update/D5?value=0",
+            success : function(){
+                console.log("AJAX Request Sent");
+                dot_1.classList.add("glow");
+                dot_1.style.background = "#FFFF00";
+            }
+        })
+    })
+    relay_1_off.addEventListener("click",()=>{
+        console.log("Relay 1")
+        $.ajax({
+            url : "http://188.166.206.43/pJz6LWALkpKRzU3HB1G6Zmq13qwqxrj7/update/D5?value=1",
+            success : function(){
+                console.log("AJAX Request Sent");
+                dot_1.classList.remove("glow");
+                dot_1.style.background = "#bbb";
+
+            }
+        })
+    })
+    relay_2_on.addEventListener("click",()=>{
+        console.log("Relay 2")
+        $.ajax({
+            url : "http://188.166.206.43/pJz6LWALkpKRzU3HB1G6Zmq13qwqxrj7/update/D4?value=0",
+            success : function(){
+                console.log("AJAX Request Sent");
+                dot_2.classList.add("glow");
+                dot_2.style.background = "#FFFF00";
+
+
+            }
+        })
+    })
+    relay_2_off.addEventListener("click",()=>{
+        console.log("Relay 2")
+        $.ajax({
+            url : "http://188.166.206.43/pJz6LWALkpKRzU3HB1G6Zmq13qwqxrj7/update/D4?value=1",
+            success : function(){
+                console.log("AJAX Request Sent");
+                dot_2.classList.remove("glow");
+                dot_2.style.background = "#bbb";
+
+
+            }
+        })
+    })
+    relay_3_on.addEventListener("click",()=>{
+        console.log("Relay 3")
+        $.ajax({
+            url : "http://188.166.206.43/pJz6LWALkpKRzU3HB1G6Zmq13qwqxrj7/update/D14?value=0",
+            success : function(){
+                console.log("AJAX Request Sent");
+                dot_3.classList.add("glow");
+                dot_3.style.background = "#FFFF00";
+
+
+            }
+        })
+    })
+    relay_3_off.addEventListener("click",()=>{
+        console.log("Relay 3")
+        $.ajax({
+            url : "http://188.166.206.43/pJz6LWALkpKRzU3HB1G6Zmq13qwqxrj7/update/D14?value=1",
+            success : function(){
+                console.log("AJAX Request Sent");
+                dot_3.classList.remove("glow");
+                dot_3.style.background = "#bbb";
+
+
+            }
+        })
+    })
+    relay_4_on.addEventListener("click",()=>{
+        console.log("Relay 4")
+        $.ajax({
+            url : "http://188.166.206.43/pJz6LWALkpKRzU3HB1G6Zmq13qwqxrj7/update/D12?value=0",
+            success : function(){
+                console.log("AJAX Request Sent");
+                dot_4.classList.add("glow");
+                dot_4.style.background = "#FFFF00";
+
+
+            }
+        })
+    })
+    relay_4_off.addEventListener("click",()=>{
+        console.log("Relay 4")
+        $.ajax({
+            url : "http://188.166.206.43/pJz6LWALkpKRzU3HB1G6Zmq13qwqxrj7/update/D12?value=1",
+            success : function(){
+                console.log("AJAX Request Sent");
+                dot_4.classList.remove("glow");
+                dot_4.style.background = "#bbb";
+
+
+            }
+        })
+    })
+</script>
 
 {% endblock content %}
